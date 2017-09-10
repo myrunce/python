@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Books</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            div.header h1, div.header p{
+                display: inline-block;
+            }
+            div.header a{
+                margin-left: 70%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div class="header">
+                <h1>Welcome {{request.session.user_name}}</h1>
+                <a href='books/add'>Add a book and Review</a>
+            </div>
+            <div class="recent">
+            </div>
+            <div class='other'>
+            </div>
+        </div>
+    </body>
+</html>

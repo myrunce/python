@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Submitted Information</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <p>Thanks for submitting this form! You have submitted this form {{ request.session.counter }} times now.</p>
+        <fieldset>
+            <h3><u>Submitted Information</u></h3>
+            <p>Name: {{ name }}</p>
+            <p>Dojo Location: {{ location }}</p>
+            <p>Favorite Language: {{ language }}</p>
+            <p>Comment: {{ comment }}</p>
+            <form action="/" method="get">
+                {% csrf_token %}
+                <input type="submit" value="Go back">
+            </form>
+        </fieldset>
+    </body>
+</html>

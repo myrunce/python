@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{{ the_book.title }}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="header">
+            <h2>{{ the_book.title }}</h2>
+            <p>Author: {{ the_book.author }}</p>
+            <a href="/books">Home</a> 
+            <a href="/logout">logout</a>
+        </div>
+        <div class="reviews">
+            <h2>Reviews:</h2>
+            {% for review in the_reviews %}
+                <div class="a_review">
+                    <p>Rating: {{ review.rating }}</p>
+                    <p><a href="/users/{{ review.user.id }}">{{ review.user.name }}</a> says: {{ review.desc }}</p>
+                    <p><i>Posted on: {{ review.posted_on }}</i></p>
+                    {% if review.user.id == request.session.user_id %}
+                        <a href="/delete/{{ the_book.id }}/{{ review.id }}">Delete this review</a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        <div class="postReview">
+            <h5>Add a Review:</h5>
+            <form action="/postReview" method="POST">
+                {% csrf_token %}
+                <textarea name="review"></textarea>
+                <p><b>Rating:</b><select name="rating">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select></p>
+                <input type="hidden" value="{{ the_book.id }}" name="book_id">
+                <input type="submit" value="Submit Review">
+            </form>
+        </div>
+    </body>
+</html>

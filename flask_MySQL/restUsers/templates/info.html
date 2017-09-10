@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Info</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        {% for info in userInfo %}
+            <h1>User {{ info['id'] }}</h1>
+            <p>Full Name: {{ info['first_name'] }} {{ info['last_name'] }}
+            <p>Email: {{ info['email'] }}</p>
+            <p>Created at: {{ info['created_at'] }}</p>
+            <p><a href="http://localhost:5000/users/{{ info['id'] }}/edit">Edit</a> | <a href="http://localhost:5000/users/{{ info['id'] }}/destroy">Delete</a> | <a href="http://localhost:5000/users">Go Back</a></p>
+        {% endfor %}    
+    </body>
+</html>

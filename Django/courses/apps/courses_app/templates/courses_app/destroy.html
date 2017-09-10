@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Delete</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <h2>Are you sure you want to delete the following course?</h2>
+        <p>Name: {{ course.course_name }}</p>
+        <p>Description:  {{ course.desc }}</p><br>
+        <form action="/">
+            <input type="submit" value='No'>
+        </form>
+        <form action="/confirmDelete/{{ course.id }}">
+            <input type="submit" value="Yes! I want to delete this">
+        </form>    
+    </body>
+</html>

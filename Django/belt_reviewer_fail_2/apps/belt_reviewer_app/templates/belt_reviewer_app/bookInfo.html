@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Book Info</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div class="header">
+            <h2><u>{{ the_book.name }}</u></h2>
+            <p>By: {{ author.name }}</p>
+        </div>
+        <div class="reviews">
+            <h2><u>Reviews</u></h2>
+            {% for review in reviews %}
+                <p><b>{{ review.user.alias }}</b> wrote:</p>
+                <p>{{ review.desc }}</p>
+                {% if review.user.id == request.session.user_id %}
+                    <a href="">Delete</a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </body>
+</html>
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Courses</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <h3>Add a new course</h3>
+        <form action="/process" method="POST">
+            {% csrf_token %}
+            Name: <input type="text" name="name"><br>
+            Description: <textarea name='desc'></textarea><br>
+            <input type="submit" value="Add">
+        </form>
+        <h4>Courses</h4>
+        <fieldset>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Course Name</th>
+                        <th>Description</th>
+                        <th>Date Added</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for x in courses %}
+                        <tr>
+                            <td>{{ x.course_name }}</td>
+                            <td>{{ x.desc }}</td>
+                            <td>{{ x.date_added }}</td>
+                            <td><a href="http://localhost:8000/destroy/{{ x.id }}">remove</a></td>
+                        </tr>
+                    {% endfor %} 
+                </tbody>
+            </table>
+        </fieldset>
+    </body>
+</html>

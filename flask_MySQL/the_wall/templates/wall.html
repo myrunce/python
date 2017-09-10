@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Your Wall</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    </head>
+    <body>
+        <div id="wrapper">
+            <div class="header">
+                <h1>Welcome to Your Wall</h1>
+                <p>Welcome {{ session['user_name'] }}</p>
+                <a href="http://localhost:5000/logoff">Log Off</a>
+            </div>
+            {% for message in messages %}
+                {% if message['person'] == message['user_id'] %}
+                    <div class="postedMessage">
+                        <h4>{{ message['first_name'] }} {{ message['last_name'] }} on {{ message['updated_at'] }} wrote:</h4>
+                        <p>{{ message['message'] }}</p>
+                        {% for comment in comments %}
+                            {% if comment['message_id'] == message['id'] %}
+                                <div class="postedComment">
+                                    <h4>{{ comment['first_name'] }} {{ comment['last_name'] }} on {{ comment['created_at'] }} commented:</h4>
+                                    <p>{{ comment['comment'] }}</p>
+                                </div>
+                            {% endif %}
+                        {% endfor %}        
+                        <div class="comment">
+                            <h3>Comment on the message</h3>
+                            <form action="/postcomment" method="post">
+                                <textarea name="post_comment"></textarea><br><br>
+                                <input type="hidden" value="{{ message['id'] }}" name="hidden_id">
+                                <input type="submit" name="Submit">
+                            </form>
+                        </div>
+                    </div>
+                {% endif %} 
+            {% endfor %}
+            <div class="message">
+                <h3>Post a message:</h3>
+                <form action="/postmessage" method="post">
+                    <textarea name="post_message"></textarea><br><br>
+                    <input type="submit" name="Post">
+                </form>
+            </div>
+        </div>    
+    </body>
+</html>

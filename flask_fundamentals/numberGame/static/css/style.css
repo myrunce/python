@@ -1,0 +1,17 @@
+div.green{
+    width:200px;
+    height:200px;
+    background-color: green;
+    text-align: center;
+}
+
+div.red{
+    width:200px;
+    height: 200px;
+    background-color: red;
+    text-align: center;
+}
+
+div.info{
+    text-align: center;
+}

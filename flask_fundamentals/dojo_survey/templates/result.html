@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Result</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <h1><u>Submitted Info</u></h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}    
+        <p>Name: {{ name }}</p>
+        <p>Dojo Location: {{ location }}</p>
+        <p>Favorite Language:  {{ favorite_language }}</p>
+        <p>Comment: {{ comment }}</p>
+        <form action="/" method='get'>
+            <input type="submit" value="Back">   
+        </form>
+    </body>
+</html>

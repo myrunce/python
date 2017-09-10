@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>The Wall</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        {% with messages = get_flashed_messages()%}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endwith %}
+        <h1>Welcome to The Wall</h1>
+        <h1>Login</h1>
+        <form action="/process" method="post">
+            Email:  <input type="input" name="email"><br><br>
+            Password:  <input type="password" name="password"><br><br>
+            <input type="submit" value="Login"><br><br>
+        </form>
+        <h1>Register</h1>
+        <form action="/registering" method="post">
+            First Name:  <input type="input" name="first_name"><br><br>
+            Last Name:  <input type="input" name="last_name"><br><br>
+            Email:  <input type="input" name="email"><br><br>
+            Password:  <input type="password" name="password"><br><br>
+            Confirm Paassword: <input type="password" name="confirm_password"><br><br>
+            <input type="submit" value="Register">
+        </form>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Amadon</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <h3>Amadon Store!</h3>
+        <div class="store">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>    
+                <tbody>
+                    {% for x in product_list %}
+                        <tr>
+                            <td>{{ x.name }}</td>
+                            <td>{{ x.price }}</td>
+                            <td><form action="/amadon/process" method="POST">
+                                {% csrf_token %}
+                                    <select name="quantity">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                            </td>
+                            <td><input type="hidden" name="price" value="{{ x.price }}">
+                                <input type="submit" value="Buy!"></form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
